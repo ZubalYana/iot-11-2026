@@ -1,15 +1,3 @@
-# Написати програму алгоритмічною мовою Python згідно з завданням,
-# отриманим від викладача за табл. 1. Додайте відповідні конструктори,
-# деструктори, функції доступу та виведення інформації на екран.
-# У методі main продемонструйте роботу класів.
-
-# Створити клас Flower (height, size, color, price, quantity, deliveryRate)
-# та клас FlowerShop, що містить в асортименті набір квітів. Створіть клас
-# Bouquet, у який можна додавати будь-яку кількість квітів та дозвольте
-# підрахувати його вартість. Реалізуйте методи виведення топу найдорожчих
-# квітів в магазині та додавання, видалення з магазину.
-
-
 class Flower:
     def __init__(self, height, size, color, price, quantity, delivery_rate):
         self.height = height
@@ -73,19 +61,18 @@ class Flower:
 
 
 class FlowerShop:
-    distributor = "Some flowers distributor"
 
-    def __init__(self, flowers=None):
+    def __init__(self, flowers=None, distributor=None):
         self._flowers = list(flowers) if flowers else []
-        FlowerShop.distributor = "Another flowers distributor"
-
-    @classmethod
-    def get_distributor(cls):
-        return cls.distributor
+        self._distributor = distributor if distributor else "Some distributor"
 
     @property
     def flowers(self):
         return list(self._flowers)
+
+    @property
+    def distributor(self):
+        return list(self._distributor)
 
     def __str__(self):
         body = "\n".join(f"  - {f}" for f in self._flowers) or "  (empty)"
